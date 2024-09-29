@@ -3,7 +3,7 @@ export function requestLogger(req, res, next) {
   next();
 }
 
-export function errorHandler(req, res, next, error) {
-  console.error(error);
-  res.status(500).json({ message: "internal server error" });
+export function errorHandler(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal Server Error" });
 }
